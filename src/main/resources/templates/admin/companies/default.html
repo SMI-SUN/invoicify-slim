@@ -10,10 +10,19 @@
 	{{> common/_nav }}
 	<h1>Create a company</h1>
 
-	<form method="post" action="/admin/companies">
-		<input type="text" name="name" placeholder="Company name">
-		<input type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}">
+	<form id="create-companies-form" method="post" action="/admin/companies">
+		<input id="company-name" type="text" name="name" placeholder="Company name">
+		<input id="company-csrf" type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}">
 		<button>Create</button>
 	</form>
+	<ul id="company-list">
+	
+	{{#companies}}
+		<li>{{ name }}</li>
+	{{/companies}}
+	
+	</ul>
+	<script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/js/companies.js"></script>
 </body>
 </html>

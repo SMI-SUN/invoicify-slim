@@ -18,6 +18,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="invoicify_user")
 public class User implements UserDetails {
@@ -31,9 +33,11 @@ public class User implements UserDetails {
 	@Column(nullable = false, unique = true)
 	private String username;
 	
+	@JsonIgnore
 	@Column(nullable = false)
 	private String password;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Role> roles;
 

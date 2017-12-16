@@ -82,7 +82,7 @@ public class InvoicesController {
 		
 		for (BillingRecord record : records) {
 			InvoiceLineItem lineItem = record.getLineItem();
-			if (lineItem == null) {
+			if (lineItem == null) { 
 				recordsWithoutLineItem.add(record);
 			}
 		}
